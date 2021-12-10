@@ -411,7 +411,9 @@ This time, I only want the full names ("<firstname> <lastname>") of my friends w
 const friendsWhoAreColleaguesOfStacie = friends.filter(element => {
    element.colleagues.some(el => el.name === 'Stacie Villarreal');
 });
-const colleaguesName =friendsWhoAreColleaguesOfStacie.map(element =>)
+const colleaguesName = friendsWhoAreColleaguesOfStacie.map(
+  (element) => `${element.name.first} ${element.name.last}`
+);
 /*
 
 5) Find "Multi-tasking" colleagues
@@ -425,6 +427,14 @@ This time, I only want the full names of the people who can multitask
 */
 
 let colleaguesWhoCanMultitask = [];
+
+friends.forEach((element) => {
+  element.colleagues.forEach((colleague) => {
+    if (colleague.skills.includes("Multi-tasking")) {
+      colleaguesWhoCanMultitask.push(`${colleague.name}`);
+    }
+  });
+});
 
 /* ======= TESTS - DO NOT MODIFY ===== 
 - To run the tests for this exercise, run `npm test -- --testPathPattern 6-people-I-know.js`
